@@ -1,0 +1,47 @@
+{
+  "name": "shivam-portfolio",
+  "version": "1.0.0",
+  "description": "Modern Portfolio Website with PWA features",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx live-server --port=8000",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "npx cleancss -o styles.min.css styles.css",
+    "minify-js": "npx terser script.js -o script.min.js --compress --mangle",
+    "serve": "npx serve",
+    "lighthouse": "npx lighthouse http://localhost:8000 --view",
+    "format": "npx prettier --write \"**/*.{html,css,js,json}\"",
+    "validate": "npx html-validator index.html"
+  },
+  "keywords": [
+    "portfolio",
+    "personal",
+    "website",
+    "pwa",
+    "responsive",
+    "modern",
+    "developer",
+    "engineer"
+  ],
+  "author": "Shivam Garg",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "html-validator-cli": "^7.1.0",
+    "http-server": "^14.1.1",
+    "lighthouse": "^11.0.0",
+    "live-server": "^1.2.2",
+    "prettier": "^3.0.0",
+    "serve": "^14.2.1",
+    "terser": "^5.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JDevShivamGarg/portfolio.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

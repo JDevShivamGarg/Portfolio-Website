@@ -2,7 +2,6 @@
 
 A cutting-edge, fully responsive portfolio website showcasing modern web development practices with stunning animations, dark mode, and Progressive Web App (PWA) capabilities.
 
-![Portfolio Preview](assets/preview.png)
 
 ## ✨ Features
 
@@ -197,38 +196,6 @@ The portfolio is a fully functional Progressive Web App:
 2. Go to Settings → Pages
 3. Select source branch
 4. Your site will be at `https://username.github.io/repository`
-
-### Netlify
-1. Connect GitHub repository
-2. Auto-deploy on push
-3. Custom domain support
-
-### Vercel
-1. Import GitHub repository
-2. Zero-config deployment
-3. Automatic HTTPS
-
-## 📊 Performance Tips
-
-1. **Optimize Images**
-   - Use WebP format for better compression
-   - Resize images to actual display size
-   - Use lazy loading for below-fold images
-
-2. **Minify Resources**
-   - Minify CSS and JavaScript files
-   - Use CSS and JS minification tools
-
-3. **Enable Compression**
-   - Configure server for gzip/brotli compression
-   - Use CDN for static assets
-
-## 🎯 SEO Optimization
-
-1. Update meta tags in `index.html`
-2. Add structured data for better search results
-3. Create sitemap.xml
-4. Submit to Google Search Console
 
 ## 📄 License
 

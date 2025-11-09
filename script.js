@@ -632,6 +632,20 @@ function openProjectModal(projectId) {
             technologies: ['React', 'D3.js', 'JavaScript', 'Neo4j'],
             github: 'https://github.com/JDevShivamGarg/Neo4j-Visualization-Tool',
             demo: 'https://jdevshivamgarg.github.io/neo4j-visualization/'
+        },
+        airlens: {
+            title: 'AirLens - Smart Environmental Monitoring System',
+            image: 'assets/airlens.png',
+            description: 'AirLens is a comprehensive full-stack application providing real-time environmental data monitoring across 31+ cities in India. It automatically fetches data from multiple weather and air quality APIs, stores it in a cloud database, and presents it through an intuitive, interactive web interface.',
+            features: [
+                'Real-time Dashboard: Interactive charts (Line/Bar) with Recharts, City-based filtering, Sortable data tables, Live clock and countdown to next refresh, Gauge charts for key metrics.',
+                'Interactive Maps: Leaflet-based geographic visualization, Color-coded markers by metric (AQI, Temp, Humidity, Wind), City popups with detailed information, Metric selector dropdown.',
+                'Alert Management: Customizable thresholds (Critical & Warning levels), Real-time alert generation, Alert filtering and management, Toast notifications.',
+                'Smart Caching: Client-side localStorage caching (1-hour TTL), Server-side cache control headers, Scheduled data refresh (12 PM daily), 99% reduction in API calls.'
+            ],
+            technologies: ['React', 'Tailwind CSS', 'FastAPI', 'Supabase', 'Docker', 'Vite', 'Recharts', 'Leaflet'],
+            github: 'https://github.com/JDevShivamGarg/Smart-Environmental-Monitoring',
+            demo: 'https://jdevshivamgarg.github.io/Smart-Environmental-Monitoring/'
         }
     }
 

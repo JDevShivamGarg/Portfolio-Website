@@ -1,5 +1,7 @@
 # 🚀 Modern Portfolio Website - Shivam Garg
 
+[![Deployed Link](https://img.shields.io/badge/Deployed-Live-brightgreen)](https://jdevshivamgarg.github.io/Portfolio-Website/)
+
 A cutting-edge, fully responsive portfolio website showcasing modern web development practices with stunning animations, dark mode, and Progressive Web App (PWA) capabilities.
 
 

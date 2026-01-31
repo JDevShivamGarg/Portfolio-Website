@@ -565,13 +565,13 @@ function openProjectModal(projectId) {
             image: 'assests/source-sync.png',
             description: 'Source Sync is a web application that uses AI to perform a deep, contextual analysis comparing an anime adaptation to its original source material (e.g., a manga or light novel).',
             features: [
-                'AI-Powered Semantic Match: The system uses a sophisticated AI pipeline to intelligently find all text from the source novel that has no matching equivalent in the anime\'s dialogue.',
-                'Thematic Clustering: To preserve context, the application uses K-Means clustering to automatically group related missing scenes by topic (e.g., "Character Backstory," "Political Subplot").',
-                'Narrative Arc Analysis: Each thematic cluster is analyzed by a Large Language Model which acts as a "story editor," summarizing the significant scenes and mini-arcs that were cut and explaining their importance.',
-                'Structured Reporting: The final output is a clean, categorized report presented to the user, breaking down the missing content into categories like "Character Development," "World Building," or "Side Plots."',
-                'Effortless Comparison: A simple, clean interface for users to upload an anime\'s subtitle file (.srt) and the corresponding source material (.txt).'
+                'AI-Powered Semantic Match: Uses TensorFlow embeddings and FAISS for high-speed similarity search to find source text with no anime equivalent.',
+                'Thematic Clustering: Applies K-Means clustering to thematically group unmatched content (e.g., "Character Backstory").',
+                'Narrative Arc Analysis: Integrated Gemini 1.5 Flash LLM to analyze clusters and generate structured JSON reports on significant cut content.',
+                'Structured Reporting: Categorizes missing content into "Character Development," "World Building," etc.',
+                'Effortless Comparison: Upload subtitle (.srt) and source (.txt) files for instant analysis.'
             ],
-            technologies: ['Python', 'Flask', 'React', 'Tailwind CSS', 'Scikit-learn', 'NLP'],
+            technologies: ['Python', 'Flask', 'React', 'TensorFlow', 'FAISS', 'Gemini 1.5 Flash'],
             github: 'https://github.com/JDevShivamGarg/Source-Sync',
         },
         sentibot: {
@@ -592,15 +592,15 @@ function openProjectModal(projectId) {
         deepfake: {
             title: 'Deepfake Detection System',
             image: 'assets/deepfake.png',
-            description: 'An advanced deepfake detection system using state-of-the-art deep learning techniques to identify manipulated videos.',
+            description: 'An advanced deepfake detection system using a hybrid ResNeXt-50 and LSTM network to analyze spatial and temporal artifacts.',
             features: [
-                '92% accuracy on benchmark datasets',
-                'ResNext50 and LSTM architecture',
-                'Real-time video analysis',
-                'Frame-by-frame detection',
-                'Confidence score visualization'
+                'Achieved 90% accuracy on the FaceForensics++ dataset.',
+                'Hybrid architecture combining ResNeXt-50 (spatial) and LSTM (temporal).',
+                'Real-time video/image upload for analysis.',
+                'Designed to educate users on deepfake technology.',
+                'Live confidence score visualization.'
             ],
-            technologies: ['Python', 'PyTorch', 'OpenCV', 'NumPy', 'Pandas', 'Matplotlib'],
+            technologies: ['Python', 'PyTorch', 'ResNeXt-50', 'LSTM', 'Flask', 'OpenCV'],
             github: 'https://github.com/JDevShivamGarg/Deepfake-Detection-Webapp',
             demo: '#'
         },
@@ -636,14 +636,15 @@ function openProjectModal(projectId) {
         airlens: {
             title: 'AirLens - Smart Environmental Monitoring System',
             image: 'assets/airlens.png',
-            description: 'AirLens is a comprehensive full-stack application providing real-time environmental data monitoring across 31+ cities in India. It automatically fetches data from multiple weather and air quality APIs, stores it in a cloud database, and presents it through an intuitive, interactive web interface.',
+            description: 'AirLens is a full-stack platform tracking air quality across 31+ cities, serving real-time data through a FastAPI backend.',
             features: [
-                'Real-time Dashboard: Interactive charts (Line/Bar) with Recharts, City-based filtering, Sortable data tables, Live clock and countdown to next refresh, Gauge charts for key metrics.',
-                'Interactive Maps: Leaflet-based geographic visualization, Color-coded markers by metric (AQI, Temp, Humidity, Wind), City popups with detailed information, Metric selector dropdown.',
-                'Alert Management: Customizable thresholds (Critical & Warning levels), Real-time alert generation, Alert filtering and management, Toast notifications.',
-                'Smart Caching: Client-side localStorage caching (1-hour TTL), Server-side cache control headers, Scheduled data refresh (12 PM daily), 99% reduction in API calls.'
+                'Automated ETL Pipeline: Used Python/APScheduler to ingest, validate, and transform data from multiple APIs.',
+                'High Volume Storage: Storing 1000+ records daily in Supabase PostgreSQL.',
+                'Performance Optimization: Implemented intelligent caching (1-hour TTL) and rate limiting, reducing API calls by 99%.',
+                'Fast Load Times: Cut load time to 50ms.',
+                'Deployment: Containerized with Docker and Nginx on Render, ensuring 99.9% uptime.'
             ],
-            technologies: ['React', 'Tailwind CSS', 'FastAPI', 'Supabase', 'Docker', 'Vite', 'Recharts', 'Leaflet'],
+            technologies: ['React 19', 'FastAPI', 'PostgreSQL (Supabase)', 'Docker', 'APScheduler', 'Tailwind CSS'],
             github: 'https://github.com/JDevShivamGarg/Smart-Environmental-Monitoring',
             demo: 'https://jdevshivamgarg.github.io/Smart-Environmental-Monitoring/'
         }

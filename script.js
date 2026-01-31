@@ -258,6 +258,11 @@ function initSkillsFilter() {
                     }, 300);
                 }
             });
+
+            // Refresh AOS after filtering
+            setTimeout(() => {
+                AOS.refresh();
+            }, 400);
         });
     });
 }
@@ -288,6 +293,11 @@ function initProjectsFilter() {
                     }, 300);
                 }
             });
+
+            // Refresh AOS after filtering
+            setTimeout(() => {
+                AOS.refresh();
+            }, 400);
         });
     });
 }

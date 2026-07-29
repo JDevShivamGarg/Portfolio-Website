@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     initSmoothScroll();
     initIntersectionObserver();
+    initPersonaFilter();
+    initDynamicMetrics();
 });
 
 // =============== Preloader ===============
@@ -597,6 +599,13 @@ function openProjectModal(projectId) {
                 'Pluggable LLM Backends: Seamless switching between local Ollama models and remote Groq API endpoints.'
             ],
             technologies: ['Python', 'FastAPI', 'SQLite FTS5', 'BM25', 'ChromaDB', 'BAAI Embeddings', 'Ollama', 'Groq API'],
+            mermaid: `graph LR
+    UserQuery[Query] --> Lexical[SQLite FTS5 + BM25]
+    UserQuery --> Dense[ChromaDB Vector Store]
+    Lexical --> RRF[Reciprocal Rank Fusion]
+    Dense --> RRF
+    RRF --> MapReduce[Map-Reduce Batching]
+    MapReduce --> Citations[Character Offset Grounded Answer]`,
             github: 'https://github.com/JDevShivamGarg/Bookwright',
             demo: '#'
         },
@@ -612,6 +621,13 @@ function openProjectModal(projectId) {
                 'Observability Dashboard: Interactive Streamlit UI with side-by-side prompt version diffs and Plotly regression heatmaps.'
             ],
             technologies: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Celery', 'Streamlit', 'Plotly', 'HuggingFace Transformers'],
+            mermaid: `graph TD
+    Prompt[Input Prompt] --> LocalAssert[AegisLocalEvaluator]
+    Prompt --> AsyncTelemetry[AegisAPIClient]
+    AsyncTelemetry --> Celery[Distributed Celery Workers]
+    Celery --> Similarity[MiniLM Semantic Score]
+    Celery --> Toxicity[Roberta Safety Score]
+    Celery --> CostTracker[Micro-Dollar Token Costing]`,
             github: 'https://github.com/JDevShivamGarg/Aegis-LLM-Evaluator---Observability-Framework',
             demo: '#'
         },
@@ -655,6 +671,11 @@ function openProjectModal(projectId) {
                 'Submission Reviewer Bot: Automated prompt persona enforcing quality checklists and architectural standards.'
             ],
             technologies: ['Markdown', 'Mermaid.js', 'System Architecture', 'LLM Prompt Engineering'],
+            mermaid: `graph TD
+    UserPrompt[User Idea] --> AgentPrompt[Autonomous AI Generator Prompt]
+    AgentPrompt --> HLD[26-Section HLD Document]
+    HLD --> Mermaid[Mermaid Sequence & Component Diagrams]
+    HLD --> ReviewBot[Automated Quality Enforcer]`,
             github: 'https://github.com/JDevShivamGarg/system-blueprints',
             demo: '#'
         },
@@ -761,6 +782,15 @@ function openProjectModal(projectId) {
             <div class="project-modal-content">
                 <p class="project-modal-description">${project.description}</p>
                 
+                ${project.mermaid ? `
+                    <div class="project-modal-section">
+                        <h3>Architecture Sequence</h3>
+                        <div class="mermaid-container">
+                            <div class="mermaid">${project.mermaid}</div>
+                        </div>
+                    </div>
+                ` : ''}
+
                 <div class="project-modal-section">
                     <h3>Key Features</h3>
                     <ul class="project-features">
@@ -791,6 +821,15 @@ function openProjectModal(projectId) {
         elements.modalBody.innerHTML = modalContent;
         elements.projectModal.classList.add('active');
         document.body.style.overflow = 'hidden';
+
+        // Trigger Mermaid rendering if diagram exists
+        if (project.mermaid && window.mermaid) {
+            setTimeout(() => {
+                try {
+                    window.mermaid.contentLoaded();
+                } catch(e) {}
+            }, 100);
+        }
     }
 }
 
@@ -1027,6 +1066,92 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// =============== Recruiter Persona Filter ===============
+function initPersonaFilter() {
+    const personaBtns = document.querySelectorAll('.persona-btn');
+    if (!personaBtns.length) return;
+
+    personaBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            personaBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const persona = btn.dataset.persona;
+            applyPersonaFilter(persona);
+        });
+    });
+}
+
+function applyPersonaFilter(persona) {
+    const projectCards = document.querySelectorAll('.project-card');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    if (persona === 'all') {
+        projectCards.forEach(c => c.classList.remove('persona-dimmed', 'persona-highlighted'));
+        skillCards.forEach(c => c.classList.remove('persona-dimmed', 'persona-highlighted'));
+        return;
+    }
+
+    projectCards.forEach(card => {
+        const category = card.dataset.category || '';
+        if ((persona === 'ai' && category.includes('ml')) ||
+            (persona === 'backend' && (category.includes('data') || category.includes('tools'))) ||
+            (persona === 'fullstack' && category.includes('web'))) {
+            card.classList.remove('persona-dimmed');
+            card.classList.add('persona-highlighted');
+        } else {
+            card.classList.remove('persona-highlighted');
+            card.classList.add('persona-dimmed');
+        }
+    });
+
+    skillCards.forEach(card => {
+        const category = card.dataset.category || '';
+        if ((persona === 'ai' && category.includes('ml')) ||
+            (persona === 'backend' && (category.includes('backend') || category.includes('database') || category.includes('tools'))) ||
+            (persona === 'fullstack' && (category.includes('frontend') || category.includes('languages')))) {
+            card.classList.remove('persona-dimmed');
+            card.classList.add('persona-highlighted');
+        } else {
+            card.classList.remove('persona-highlighted');
+            card.classList.add('persona-dimmed');
+        }
+    });
+}
+
+// =============== Dynamic REST/GraphQL Metrics Fetch ===============
+async function initDynamicMetrics() {
+    // 1. GitHub Dynamic API Fetch
+    try {
+        const ghRes = await fetch('https://api.github.com/users/JDevShivamGarg');
+        if (ghRes.ok) {
+            const ghData = await ghRes.json();
+            const repoCountEl = document.getElementById('gh-repo-count');
+            if (repoCountEl) repoCountEl.textContent = `${ghData.public_repos} Public Repos`;
+            
+            const subEl = document.getElementById('github-stats-sub');
+            if (subEl) subEl.textContent = `@${ghData.login} | ${ghData.followers} Followers | ${ghData.public_repos} Repositories`;
+        }
+    } catch (e) {
+        console.log('GitHub API fallback active');
+    }
+
+    // 2. LeetCode Dynamic API Fetch with Fail-Soft Fallback
+    try {
+        const lcRes = await fetch('https://leetcode-api-faisalshohag.vercel.app/Bkgt58XMZh');
+        if (lcRes.ok) {
+            const lcData = await lcRes.json();
+            const rankEl = document.getElementById('leetcode-rank');
+            if (rankEl && lcData.ranking) {
+                rankEl.textContent = `Global Rank: #${lcData.ranking.toLocaleString()} | ${lcData.totalSolved || 142}+ Solved`;
+            }
+        }
+    } catch (e) {
+        console.log('LeetCode API fallback active');
+    }
+}
+
 // =============== Export Functions ===============
 window.openProjectModal = openProjectModal;
 window.closeProjectModal = closeProjectModal;
+

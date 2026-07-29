@@ -37,6 +37,9 @@
     <!-- AOS Animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -76,6 +79,7 @@
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#articles" class="nav-link">Articles</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
 
@@ -200,6 +204,17 @@
                     <span class="section-subtitle">Get To Know</span>
                     <h2 class="section-title">About Me</h2>
                     <div class="section-line"></div>
+                </div>
+
+                <!-- Recruiter Persona Switcher -->
+                <div class="persona-switcher-container" data-aos="fade-up">
+                    <div class="persona-label"><i class="fas fa-user-tag"></i> Tailor Portfolio View for Recruiter Role:</div>
+                    <div class="persona-btns">
+                        <button class="persona-btn active" data-persona="all">All View</button>
+                        <button class="persona-btn" data-persona="ai">Agentic AI & ML Specialist</button>
+                        <button class="persona-btn" data-persona="backend">Backend & Distributed Systems</button>
+                        <button class="persona-btn" data-persona="fullstack">Full-Stack Engineer</button>
+                    </div>
                 </div>
 
                 <div class="about-content">
@@ -1223,6 +1238,111 @@
                         <span>View All Projects</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medium Articles & Thought Leadership Section -->
+        <section class="articles" id="articles">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">Publications & Writing</span>
+                    <h2 class="section-title">Technical Articles & System Insights</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="articles-grid" id="articles-grid" data-aos="fade-up">
+                    <!-- Featured Medium Article -->
+                    <div class="article-card">
+                        <div>
+                            <div class="project-tags" style="margin-bottom: 0.8rem;">
+                                <span class="tag">Dual-Write Architecture</span>
+                                <span class="tag">Data Sync</span>
+                                <span class="tag">System Design</span>
+                            </div>
+                            <h3>Building a Production-Grade Data Synchronization Engine: A Deep Dive into Dual-Write Architecture</h3>
+                            <p>
+                                Detailed engineering guide analyzing dual-write architecture patterns for production data synchronization — connected to zero-downtime Firestore to PostgreSQL migration and high-throughput batch pipelines at vCommission.
+                            </p>
+                        </div>
+                        <div>
+                            <a href="https://medium.com/@shivamcp2694/building-a-production-grade-data-synchronization-engine-a-deep-dive-into-dual-write-architecture-31f1e2cdb311" target="_blank" class="article-link">
+                                <span>Read Full Article on Medium</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Developer Metrics & LeetCode Section -->
+        <section class="live-stats-full" id="stats">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">Live Activity</span>
+                    <h2 class="section-title">Developer Stats & Problem Solving</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="live-stats-grid" data-aos="fade-up">
+                    <!-- LeetCode Widget Card -->
+                    <div class="stat-box">
+                        <div class="stat-box-header">
+                            <div class="stat-icon-wrapper">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-header-info">
+                                <h3>LeetCode Problem Solving</h3>
+                                <span id="leetcode-rank" class="stat-badge">Global Rank: #830,672 | 198+ Solved</span>
+                            </div>
+                        </div>
+                        <div class="stat-category-grid">
+                            <div class="category-box">
+                                <span class="category-name">Dynamic Programming</span>
+                                <span class="category-count">14 Solved</span>
+                            </div>
+                            <div class="category-box">
+                                <span class="category-name">Backtracking & Recursion</span>
+                                <span class="category-count">12 Solved</span>
+                            </div>
+                            <div class="category-box">
+                                <span class="category-name">Hash Table & Strings</span>
+                                <span class="category-count">68 Solved</span>
+                            </div>
+                            <div class="category-box">
+                                <span class="category-name">Binary Search & Arrays</span>
+                                <span class="category-count">113 Solved</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Live Stats Card -->
+                    <div class="stat-box">
+                        <div class="stat-box-header">
+                            <div class="stat-icon-wrapper">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="stat-header-info">
+                                <h3>GitHub Developer Stats</h3>
+                                <span id="github-stats-sub" class="stat-badge">@JDevShivamGarg | Developer Program Member</span>
+                            </div>
+                        </div>
+                        <div class="stat-category-grid">
+                            <div class="category-box">
+                                <span class="category-name">Public Repositories</span>
+                                <span id="gh-repo-count" class="category-count">35 Public Repos</span>
+                            </div>
+                            <div class="category-box">
+                                <span class="category-name">GitHub Achievements</span>
+                                <span class="category-count">Pull Shark, YOLO</span>
+                            </div>
+                            <div class="category-box">
+                                <span class="category-name">Featured Repositories</span>
+                                <span class="category-count">Dev-Deck, Source-Sync</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

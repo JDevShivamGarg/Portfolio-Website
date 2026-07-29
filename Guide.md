@@ -658,17 +658,83 @@ cp styles.css styles.backup.css
 
 ---
 
+## 📰 **Articles & Publications Section**
+
+### **Adding New Medium / Technical Article:**
+```html
+<!-- Find in index.html (around line 1250) -->
+<section class="articles" id="articles">
+    <div class="container">
+        <div class="articles-grid" id="articles-grid">
+            <div class="article-card">
+                <div>
+                    <div class="project-tags">
+                        <span class="tag">Topic Tag</span>
+                    </div>
+                    <h3>Article Title</h3>
+                    <p>Article summary...</p>
+                </div>
+                <div>
+                    <a href="https://medium.com/@yourusername/article-link" target="_blank" class="article-link">
+                        <span>Read Full Article on Medium</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+---
+
+## 📊 **Live Stats & LeetCode Metrics Section**
+
+### **Customizing Live Activity Stats:**
+```html
+<!-- Find in index.html (around line 1280) -->
+<section class="live-stats-full" id="stats">
+    <div class="container">
+        <div class="live-stats-grid">
+            <!-- LeetCode Card -->
+            <div class="stat-box">
+                <span id="leetcode-rank">Global Rank: #830,672 | 198+ Solved</span>
+                <!-- Skill progress bars -->
+            </div>
+            <!-- GitHub Card -->
+            <div class="stat-box">
+                <span id="gh-repo-count">35 Public Repos</span>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+### **Dynamic API Fetching:**
+```javascript
+// In script.js
+async function initDynamicMetrics() {
+    // Dynamically fetches GitHub profile stats & LeetCode rank at runtime
+    const ghRes = await fetch('https://api.github.com/users/JDevShivamGarg');
+    const lcRes = await fetch('https://leetcode-api-faisalshohag.vercel.app/Bkgt58XMZh');
+}
+```
+
+---
+
 ## 🔍 **Quick Reference**
 
 | Section | HTML Location | CSS Location | JS Location |
 |---------|--------------|--------------|-------------|
 | Navigation | Lines 50-100 | Lines 150-300 | Lines 50-80 |
 | Hero | Lines 120-190 | Lines 400-600 | Lines 180-200 |
-| About | Lines 200-310 | Lines 700-900 | Lines 400-450 |
+| About & Persona Switcher | Lines 200-310 | Lines 700-900 | Lines 1070-1120 |
 | Skills | Lines 320-460 | Lines 1000-1200 | Lines 250-280 |
-| Timeline | Lines 470-550 | Lines 1300-1500 | - |
-| Projects | Lines 570-680 | Lines 1600-1800 | Lines 650-750 |
-| Contact | Lines 760-880 | Lines 2000-2200 | Lines 500-550 |
+| Experience | Lines 470-550 | Lines 1300-1500 | - |
+| Projects & Mermaid Modals | Lines 570-680 | Lines 1600-1800 | Lines 650-790 |
+| Medium Articles | Lines 1240-1275 | Lines 2615-2670 | - |
+| Live Stats & LeetCode | Lines 1280-1350 | Lines 2490-2560 | Lines 1120-1150 |
+| Contact | Lines 1360-1450 | Lines 2000-2200 | Lines 500-550 |
 
 Remember to:
 - Always test changes locally first

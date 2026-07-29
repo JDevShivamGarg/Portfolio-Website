@@ -201,11 +201,11 @@ function initTypewriter() {
 // =============== Roles Carousel ===============
 function initRolesCarousel() {
     const roles = [
-        'ML Engineer',
+        'Agentic AI Engineer',
+        'ML & Systems Engineer',
         'Full Stack Developer',
-        'Gen AI Enthusiast',
+        'Gen AI Specialist',
         'Competitive Programmer',
-        'Problem Solver',
         'Tech Innovator'
     ];
     
@@ -570,23 +570,112 @@ function initIntersectionObserver() {
 // =============== Project Modal ===============
 function openProjectModal(projectId) {
     const projectData = {
+        devdeck: {
+            title: 'Dev-Deck - Terminal SRS & AI Learning Mobile App',
+            image: 'assets/dev-deck.png',
+            description: 'Dev-Deck is an offline-first mobile app built for software engineers to accelerate technical learning using Spaced Repetition (SRS) algorithms and AI content generation.',
+            features: [
+                'Offline-First SRS: All flashcards, progress, and review schedules computed locally via expo-sqlite.',
+                'Groq AI Card Generator: Integrates llama-3.3-70b-versatile for automated deck generation with context-aware deduplication.',
+                'BYO-LLM Clipboard Flow: Support for importing custom flashcards from ChatGPT/Claude prompt outputs.',
+                'Multiple Study Modes: Scenario-based learning, Flashcard review, and Multiple-Choice Questions.',
+                'Brutalist Terminal Design: High-contrast 8px grid layout with custom typography and smooth animations.'
+            ],
+            technologies: ['React Native', 'Expo SDK 54', 'expo-sqlite', 'Groq API', 'Zustand', 'Tailwind CSS / NativeWind'],
+            github: 'https://github.com/JDevShivamGarg/Dev-Deck',
+            demo: '#'
+        },
+        bookwright: {
+            title: 'Bookwright - Privacy-First RAG Document Intelligence',
+            image: 'assets/bookwright.png',
+            description: 'Local web application and CLI agent for full-text search and intelligent Q&A over personal EPUB and PDF document libraries with zero external data upload.',
+            features: [
+                'Hybrid Dual-Engine Retrieval: Combines lexical (SQLite FTS5 + BM25) and dense semantic (ChromaDB + BAAI embeddings) search via Reciprocal Rank Fusion (RRF).',
+                'Adaptive Ingestion: Zero-wait document indexing with background auto-promotion for heavily queried texts.',
+                'Map-Reduce Batching: Handles 40,000+ word multi-chapter queries bypassing LLM context window constraints.',
+                'Character-Offset Citation Grounding: Strict page-level citation mapping eliminates hallucinations.',
+                'Pluggable LLM Backends: Seamless switching between local Ollama models and remote Groq API endpoints.'
+            ],
+            technologies: ['Python', 'FastAPI', 'SQLite FTS5', 'BM25', 'ChromaDB', 'BAAI Embeddings', 'Ollama', 'Groq API'],
+            github: 'https://github.com/JDevShivamGarg/Bookwright',
+            demo: '#'
+        },
+        aegis: {
+            title: 'Aegis - LLM Evaluation & Observability Framework',
+            image: 'assets/aegis.png',
+            description: 'Production-grade evaluation and telemetry framework for LLM applications with dual-pathway local assertions and distributed background evaluation.',
+            features: [
+                'Dual-Pathway Evaluation: AegisLocalEvaluator (in-memory) + AegisAPIClient (async PostgreSQL/Redis telemetry).',
+                'Distributed Celery Workers: Parallel model judge consensus pipelines executing pre-downloaded local evaluation models.',
+                'Safety & Grounding Metrics: Evaluates semantic similarity (all-MiniLM-L6-v2), toxicity (unbiased-toxic-roberta), and RAG grounding scores.',
+                'Micro-Dollar Cost Aggregation: Aggregates token usage costs down to $10^-6 USD resolution via dynamic provider pricing tables.',
+                'Observability Dashboard: Interactive Streamlit UI with side-by-side prompt version diffs and Plotly regression heatmaps.'
+            ],
+            technologies: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Celery', 'Streamlit', 'Plotly', 'HuggingFace Transformers'],
+            github: 'https://github.com/JDevShivamGarg/Aegis-LLM-Evaluator---Observability-Framework',
+            demo: '#'
+        },
+        labdeployment: {
+            title: 'Lab Deployment Agent - 5G/4G Kubernetes Automation Platform',
+            image: 'assets/lab-deployment.png',
+            description: 'Kubernetes deployment automation platform built at Amdocs for Openet 5G/4G Telco workloads and Openet Charging (AOC) stacks across multi-namespace clusters.',
+            features: [
+                'FastMCP Server (~65 Tools): Exposes modular, composable tools driving Helm 3 and kubectl over SSH across 6-node RHEL clusters.',
+                '5-Tier Layered Values Merge: Dynamic configuration cascading from global → namespace → product → usecase → custom overrides.',
+                'Automated CRD Bootstrap Layer: Auto-substitutes Kubernetes 1.24-compatible cert-manager, ECK, and OpenTelemetry CRDs.',
+                'Async Job Model & Dashboard: Live progress polling and real-time monitoring web dashboard for multi-hour rollout pipelines.',
+                'Resource Right-Sizing: Targeted memory tuning (e.g. VoltDB 2GB heap) and PVC cleanup resolving cascading init crashes.'
+            ],
+            technologies: ['Python 3.10+', 'FastMCP', 'Helm 3', 'kubectl', 'Kubernetes', 'RHEL', 'Elasticsearch', 'Kibana'],
+            github: 'https://github.com/JDevShivamGarg',
+            demo: '#'
+        },
+        ailifecopilot: {
+            title: 'AI Life CoPilot - Multi-Agent Personal Assistant',
+            image: 'assets/ai-life-copilot.png',
+            description: 'Multi-agent AI personal orchestration system designed to reduce mental load across household, career, finances, and side hustles.',
+            features: [
+                'LangGraph Hierarchical Orchestrator: Multi-agent state machine routing queries to 6 specialist sub-agents.',
+                '3-Layer Memory Architecture: ConversationBufferWindowMemory (short-term), ChromaDB (long-term), SQLite (episodic).',
+                'Gemini 2.0 Flash Intelligence: Intent classification, agent reasoning, and natural voice/text response generation.',
+                'Telegram Bot Interface: Full text, image, and document handling via python-telegram-bot.',
+                'Live Enterprise Showcase: Developed and presented live to ~100 employees at Amdocs IWD event.'
+            ],
+            technologies: ['Python', 'LangGraph', 'LangChain', 'Gemini 2.0 Flash', 'ChromaDB', 'SQLite', 'Telegram Bot API'],
+            github: 'https://github.com/JDevShivamGarg',
+            demo: '#'
+        },
+        blueprints: {
+            title: 'system-blueprints - Architectural HLD Collection',
+            image: 'assets/blueprints.png',
+            description: 'Structured collection of High-Level Design (HLD) specifications and Mermaid-diagram-rich technical blueprints for complex software platforms.',
+            features: [
+                '26-Section Architecture Standard: Standardized templates for API contracts, data models, scalability, and security.',
+                'AI Blueprint Generator Prompt: Autonomous agent prompt for designing software blueprints from high-level user prompts.',
+                'Submission Reviewer Bot: Automated prompt persona enforcing quality checklists and architectural standards.'
+            ],
+            technologies: ['Markdown', 'Mermaid.js', 'System Architecture', 'LLM Prompt Engineering'],
+            github: 'https://github.com/JDevShivamGarg/system-blueprints',
+            demo: '#'
+        },
         sourcesync: {
             title: 'Source Sync - Narrative Analysis Tool',
-            image: 'assests/source-sync.png',
-            description: 'Source Sync is a web application that uses AI to perform a deep, contextual analysis comparing an anime adaptation to its original source material (e.g., a manga or light novel).',
+            image: 'assets/source-sync.png',
+            description: 'Source Sync is a full-stack web application performing contextual narrative analysis comparing anime adaptations against original source materials.',
             features: [
-                'AI-Powered Semantic Match: Uses TensorFlow embeddings and FAISS for high-speed similarity search to find source text with no anime equivalent.',
-                'Thematic Clustering: Applies K-Means clustering to thematically group unmatched content (e.g., "Character Backstory").',
-                'Narrative Arc Analysis: Integrated Gemini 1.5 Flash LLM to analyze clusters and generate structured JSON reports on significant cut content.',
-                'Structured Reporting: Categorizes missing content into "Character Development," "World Building," etc.',
-                'Effortless Comparison: Upload subtitle (.srt) and source (.txt) files for instant analysis.'
+                'AI-Powered Semantic Match: Uses Google Universal Sentence Encoder embeddings and FAISS similarity indexing.',
+                'Thematic Clustering: Applies K-Means clustering (scikit-learn) to group excised story beats into narrative themes.',
+                'Gemini 1.5 Flash Synthesis: Synthesizes unmatched text clusters into structured reports highlighting missing character arcs and worldbuilding.',
+                'Input Agnostic: Accepts any .srt subtitle file and plain-text source material.',
+                'Modern Stack: Containerized Python Flask backend paired with React 18 & TypeScript SPA.'
             ],
-            technologies: ['Python', 'Flask', 'React', 'TensorFlow', 'FAISS', 'Gemini 1.5 Flash'],
+            technologies: ['Python', 'Flask', 'React 18', 'TypeScript', 'TensorFlow Hub', 'FAISS', 'Gemini 1.5 Flash', 'Docker'],
             github: 'https://github.com/JDevShivamGarg/Source-Sync',
+            demo: '#'
         },
         sentibot: {
             title: 'Sentibot - Sentiment Analysis Web App',
-            image: 'assets/sentibot-full.png',
+            image: 'assets/sentibot.png',
             description: 'A comprehensive multi-modal sentiment analysis web application that analyzes emotions from text, voice, and facial expressions.',
             features: [
                 'Real-time text sentiment analysis using NLP',
@@ -600,19 +689,18 @@ function openProjectModal(projectId) {
             demo: '#'
         },
         deepfake: {
-            title: 'Deepfake Detection System',
+            title: 'Deepfake Detection System (Springer ICIVC 2025/2026)',
             image: 'assets/deepfake.png',
-            description: 'An advanced deepfake detection system using a hybrid ResNeXt-50 and LSTM network to analyze spatial and temporal artifacts.',
+            description: 'An advanced deepfake detection system using a hybrid ResNeXt-50 and LSTM network to analyze spatial and temporal artifacts. Published in Springer Nature LNNS Vol 1710.',
             features: [
                 'Achieved 90% accuracy on the FaceForensics++ dataset.',
-                'Hybrid architecture combining ResNeXt-50 (spatial) and LSTM (temporal).',
-                'Real-time video/image upload for analysis.',
-                'Designed to educate users on deepfake technology.',
-                'Live confidence score visualization.'
+                'Hybrid architecture combining ResNeXt-50 (spatial CNN) and LSTM (temporal RNN).',
+                'Real-time video/image upload platform built with Flask.',
+                'Published in Springer Nature Lecture Notes in Networks and Systems (LNNS 1710).'
             ],
-            technologies: ['Python', 'PyTorch', 'ResNeXt-50', 'LSTM', 'Flask', 'OpenCV'],
+            technologies: ['Python', 'PyTorch', 'ResNeXt-50', 'LSTM', 'Flask', 'OpenCV', 'FaceForensics++'],
             github: 'https://github.com/JDevShivamGarg/Deepfake-Detection-Webapp',
-            demo: '#'
+            demo: 'https://doi.org/10.1007/978-3-032-10664-3'
         },
         ecommerce: {
             title: 'E-Commerce Platform',
@@ -626,37 +714,37 @@ function openProjectModal(projectId) {
                 'Responsive design for all devices'
             ],
             technologies: ['React', 'Tailwind CSS', 'JavaScript', 'Node.js'],
-            github: 'https://github.com/JDevShivamGarg/E-commerce-app',
-            demo: 'https://jdevshivamgarg.github.io/E-Commerce/'
+            github: 'https://github.com/JDevShivamGarg/E-commerce',
+            demo: '#'
         },
         neo4j: {
-            title: 'Neo4j Visualization Tool',
+            title: 'Neo4j Graph Visualization Tool',
             image: 'assets/neo4j.png',
-            description: 'A web-based tool for visualizing and interacting with Neo4j graph databases, built with React and D3.js.',
+            description: 'A web-based tool for visualizing and interacting with Neo4j graph databases, built with React, Vite, and D3.js.',
             features: [
-                'Dynamic graph visualization',
+                'Dynamic graph visualization with real-time node manipulation',
                 'Interactive node and relationship exploration',
-                'Add Nodes - Create new nodes with different types (User, Post, Comment).',
-                'Responsive design'
+                'Add Nodes - Create new nodes with custom types and relationships.',
+                'Responsive design and clean user controls'
             ],
-            technologies: ['React', 'D3.js', 'JavaScript', 'Neo4j'],
-            github: 'https://github.com/JDevShivamGarg/Neo4j-Visualization-Tool',
-            demo: 'https://jdevshivamgarg.github.io/neo4j-visualization/'
+            technologies: ['React', 'D3.js', 'Vite', 'Tailwind CSS', 'Neo4j'],
+            github: 'https://github.com/JDevShivamGarg/neo4j-visualization',
+            demo: '#'
         },
         airlens: {
-            title: 'AirLens - Smart Environmental Monitoring System',
+            title: 'AirLens - Smart Environmental Monitoring Platform',
             image: 'assets/airlens.png',
-            description: 'AirLens is a full-stack platform tracking air quality across 31+ cities, serving real-time data through a FastAPI backend.',
+            description: 'AirLens is a full-stack environmental tracking platform monitoring air quality and weather across 34 cities in India.',
             features: [
-                'Automated ETL Pipeline: Used Python/APScheduler to ingest, validate, and transform data from multiple APIs.',
-                'High Volume Storage: Storing 1000+ records daily in Supabase PostgreSQL.',
-                'Performance Optimization: Implemented intelligent caching (1-hour TTL) and rate limiting, reducing API calls by 99%.',
-                'Fast Load Times: Cut load time to 50ms.',
-                'Deployment: Containerized with Docker and Nginx on Render, ensuring 99.9% uptime.'
+                'Automated Daily ETL Pipeline: APScheduler + FastAPI fetching weather and AQI metrics daily into Supabase PostgreSQL.',
+                '99% Outbound API Reduction: Client-side localStorage (1-hr TTL) + Cache-Control headers reduced API calls from 144/day to 1/day.',
+                'Ultra-Fast Load Times: Reduced page load time from ~800ms down to ~50ms.',
+                'Interactive Map & Analytics: Leaflet color-coded maps, statistical correlation matrices, and time-series charts (Recharts).',
+                'Production Hardened: SlowAPI rate limiting (20-100 req/min), CORS protection, and Docker Compose deployment on Render.'
             ],
-            technologies: ['React 19', 'FastAPI', 'PostgreSQL (Supabase)', 'Docker', 'APScheduler', 'Tailwind CSS'],
+            technologies: ['React 19', 'FastAPI', 'Supabase PostgreSQL', 'Docker', 'APScheduler', 'Tailwind CSS', 'Render'],
             github: 'https://github.com/JDevShivamGarg/Smart-Environmental-Monitoring',
-            demo: 'https://jdevshivamgarg.github.io/Smart-Environmental-Monitoring/'
+            demo: '#'
         }
     }
 
